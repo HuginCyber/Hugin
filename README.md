@@ -5,8 +5,8 @@
 <h1 align="center">Hugin</h1>
 
 <p align="center">
-  The most powerful offensive security platform ever built.<br>
-  Proxy, scanner, AI agent, race engine — one Rust binary.
+  A power tool for web security testing.<br>
+  Scanner, repeater, intruder, and AI agent — one Rust binary.
 </p>
 
 <p align="center">
@@ -16,55 +16,96 @@
   <a href="https://hugin.nu/pricing">Pricing</a>
 </p>
 
+<p align="center">
+  <img src="assets/og-card.png" alt="Hugin — a power tool for web security testing" width="100%">
+</p>
+
 ---
 
 ## What is Hugin?
 
-Hugin is the next generation of offensive security tooling. It combines a full MITM proxy, an active vulnerability scanner, an AI agent with 162 MCP tools, a race-condition engine, and E2E-encrypted real-time collaboration — all in a single Rust binary. No JavaScript. No telemetry. No account required to start.
+Hugin is a local-first security testing tool built in Rust. One binary, no accounts, no telemetry, no cloud. You see everything and send anything.
 
-**Community (free, forever):**
-- MITM Proxy (HTTP/1.1, HTTP/2, HTTP/3, WebSocket, WebTransport)
-- Active Scanner (46 checks: SSRF, SQLi, SSTI, XSS, JWT, LDAP, BOLA, path traversal, and more)
-- Passive Scanner (42 checks)
-- Intruder (fuzzer with payload generators, processors, grep matching)
-- Repeater, Sequencer, Decoder, Comparer, Site Map
-- 126 MCP tools (connect Claude, Cursor, or any MCP-compatible AI agent)
-- Browser automation (CDP + Marionette, bypasses TLS fingerprinting)
-- OOB interaction detection (DNS, HTTP, HTTPS, SMTP, LDAP, FTP, SMB)
+It combines an intercepting proxy, an active vulnerability scanner, an intruder, a repeater, and an AI agent wired through MCP — all in a single binary that runs on your machine.
 
-**Pro (7 EUR/month — for everyone):**
+## Features
+
+### Intercepting proxy
+
+- HTTP/1.1, HTTP/2, HTTP/3 (QUIC), WebSocket, WebTransport
+- TLS fingerprint passthrough — no headless browser needed for most TLS-protected targets
+- Browser automation via CDP and Marionette when you need full JS execution
+- Site map, request/response inspection, live tampering
+
+### Active scanner — 46 checks
+
+Sends payloads and confirms real bugs. Not a pattern matcher.
+
+| Category | Checks |
+|----------|--------|
+| Injection | SQLi, NoSQL, SSTI, command injection, LDAP, XPath, EL, email, SSJS, XML |
+| XSS | Reflected, stored, DOM, prototype pollution (client + server) |
+| Auth | JWT, OAuth, session fixation, Keycloak, mass assignment, BOLA, IDOR |
+| Transport | HTTP request smuggling (CL.TE, TE.CL, H2 downgrade), H2-specific, WebSocket |
+| Logic | Race conditions, CSRF, CORS, open redirect, path traversal, HPP, file upload |
+| Advanced | GraphQL + authz, cache deception, cache poisoning, host header, XXE, deserialization |
+
+### Passive scanner — 42 checks
+
+Analyzes traffic without sending anything. Catches security headers, cleartext passwords, sensitive URLs, session tokens in URLs, ViewState issues, input reflection, Referer leaks, and more.
+
+### Intruder
+
+Fuzzer with payload generators, processors, grep matching, and rate control. Snipe positions, battering ram, pitchfork, cluster bomb.
+
+### Repeater
+
+Capture, modify, and replay any request. HTTP/1.1, HTTP/2, and HTTP/3 side by side.
+
+### AI agent — 162 MCP tools
+
+Connect Claude, Cursor, or any MCP-compatible LLM. The agent can drive the proxy, run scanner checks, analyze flows, manage findings, and execute full testing workflows.
+
+Tools cover: session management, flow capture and analysis, scanner control, finding triage, OOB interaction polling, vault operations, BAC matrix testing, fingerprinting, crawling, and more.
+
+### Race condition engine
+
+Single-packet and last-byte sync techniques. Fire parallel requests to find TOCTOU bugs, rate-limit bypasses, and double-spend vulnerabilities.
+
+### OOB interaction detection
+
+Built-in OAST server. Capture blind interactions via DNS, HTTP, HTTPS, SMTP, LDAP, FTP, and SMB. No external collaborator needed.
+
+### Decoder, Sequencer, Comparer
+
+- **Decoder** — URL, Base64, HTML, hex, JWT, protobuf
+- **Sequencer** — analyze token randomness and entropy
+- **Comparer** — diff two responses visually and by bytes
+
+## Community (free, forever)
+
+Everything above is free. No account required to start. No telemetry. No time limit.
+
+## Pro — 7 EUR/month flat
+
 - Race condition engine (single-packet, last-byte sync)
 - Broken Access Control audit (IDOR, cross-tenant, JWT escalation, mass assignment)
 - HTTP request smuggling (CL.TE, TE.CL, H2 downgrade, SmuggleHarvester)
 - Synaps WASM modules (community scanner modules, sandboxed)
 - Lua extensions (modify live traffic with scripts)
-- E2E encrypted real-time collaboration
+- Encrypted real-time collaboration
 - Multi-project workspaces
-- 162-tool MCP surface (full vurl payload arsenal, DOM Invader, taint analysis)
+- Full 162-tool MCP surface
 
 No subscriptions. No auto-renewal. Pay when you need it.
-Researcher, pentester, hacker — we don't differentiate. Everyone's welcome.
-
-## This Repository
-
-This is the **community hub** for Hugin. The source code is not hosted here.
-
-Use this repo to:
-
-- **Report bugs** — [Open a bug report](../../issues/new?template=bug_report.yml)
-- **Request features** — [Open a feature request](../../issues/new?template=feature_request.yml)
-- **Discuss** — [Join discussions](../../discussions) for questions, ideas, and community chat
-- **Track releases** — [Releases](../../releases) for changelogs and download links
 
 ## Students
 
-If you have a **GitHub Student Developer Pack**, you get **12 months of Pro for free**. No forms, no proof uploads — GitHub already verified you.
+GitHub Student Developer Pack holders get 12 months of Pro for free. No forms, no proof uploads — GitHub already verified you.
 
-Claim yours at [hugin.nu/students](https://hugin.nu/students).
+Claim at [hugin.nu/students](https://hugin.nu/students).
 
 ## Download
-
-Download the latest release for your platform:
 
 | Platform | Architecture |
 |----------|-------------|
@@ -72,7 +113,7 @@ Download the latest release for your platform:
 | Linux | x86_64, aarch64 |
 | Windows | x86_64 |
 
-All binaries are **Ed25519 signed**. Verify downloads at [hugin.nu/verify](https://hugin.nu/verify).
+All binaries are Ed25519 signed. Verify at [hugin.nu/verify](https://hugin.nu/verify).
 
 ## Privacy
 
@@ -81,11 +122,24 @@ All binaries are **Ed25519 signed**. Verify downloads at [hugin.nu/verify](https
 - Accounts are anonymous IDs — no email, no password, no recovery.
 - Payments via Stripe or Bitcoin/Monero (BTCPay). No KYC.
 
+## This repository
+
+This is the community hub for Hugin. The source code is not hosted here.
+
+Use this repo to:
+
+- **Report bugs** — [Open a bug report](../../issues/new?template=bug_report.yml)
+- **Request features** — [Open a feature request](../../issues/new?template=feature_request.yml)
+- **Discuss** — [Join discussions](../../discussions) for questions, ideas, and community chat
+- **Track releases** — [Releases](../../releases) for changelogs and download links
+
 ## Links
 
-- [hugin.nu](https://hugin.nu) — Official website
+- [hugin.nu](https://hugin.nu) — Website
 - [hugin.nu/docs](https://hugin.nu/docs) — Documentation
 - [hugin.nu/about](https://hugin.nu/about) — Why Hugin exists
+- [X / Twitter](https://x.com/HuginCyber) — @HuginCyber
+- [LinkedIn](https://www.linkedin.com/company/hugin-cyber) — Hugin Cyber
 
 ## License
 

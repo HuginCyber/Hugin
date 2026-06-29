@@ -1,0 +1,7 @@
+# This is a community hub repo — no source code lives here.
+# Hugin source code is at https://hugin.nu
+*.rs
+*.toml
+*.lock
+/target/
+.cargo/

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & Discussion
+    url: https://github.com/HuginCyber/Hugin/discussions
+    about: Ask questions, share tips, or discuss Hugin with the community
+  - name: Documentation
+    url: https://hugin.nu/docs
+    about: Check the docs before reporting — your answer might already be there

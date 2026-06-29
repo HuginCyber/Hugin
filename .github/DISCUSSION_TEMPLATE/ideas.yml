@@ -1,0 +1,15 @@
+title: "[Idea] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share an idea or concept for Hugin. This is less formal than a feature request — just spark a conversation.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: What's the idea?
+      placeholder: "What if Hugin could..."
+    validations:
+      required: true

@@ -1,0 +1,72 @@
+name: Feature Request
+description: Suggest a new feature or improvement
+labels: ["feature-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea for Hugin? We'd love to hear it.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of Hugin does this relate to?
+      options:
+        - Proxy / Intercept
+        - Scanner (Active)
+        - Scanner (Passive)
+        - Intruder / Fuzzer
+        - Repeater
+        - Sequencer
+        - Decoder
+        - Site Map
+        - Comparer
+        - Crawler
+        - MCP / AI Integration
+        - Race Conditions (ratrace)
+        - Synaps Modules
+        - Lua Extensions
+        - Collaboration
+        - UI / UX
+        - CLI
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem does this solve? What workflow is missing or painful?
+      placeholder: "I often need to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like this to work?
+      placeholder: "It would be great if..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you tried workarounds or other tools for this?
+    validations:
+      required: false
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Which tier should this be in?
+      options:
+        - Community (free)
+        - Pro
+        - Not sure
+    validations:
+      required: false

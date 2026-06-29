@@ -1,12 +1,5 @@
 <p align="center">
-  <img src="assets/hugin-mark.svg" alt="Hugin" width="120">
-</p>
-
-<h1 align="center">Hugin</h1>
-
-<p align="center">
-  A power tool for web security testing.<br>
-  Scanner, repeater, intruder, and AI agent — one Rust binary.
+  <img src="assets/og-card.png" alt="Hugin — a power tool for web security testing" width="100%">
 </p>
 
 <p align="center">
@@ -14,10 +7,6 @@
   <a href="https://hugin.nu/download">Download</a> &middot;
   <a href="https://hugin.nu/docs">Documentation</a> &middot;
   <a href="https://hugin.nu/pricing">Pricing</a>
-</p>
-
-<p align="center">
-  <img src="assets/og-card.png" alt="Hugin — a power tool for web security testing" width="100%">
 </p>
 
 ---

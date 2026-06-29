@@ -5,8 +5,8 @@
 <h1 align="center">Hugin</h1>
 
 <p align="center">
-  Security intercepting proxy for web application penetration testing.<br>
-  Built with Rust. No JavaScript. One binary.
+  The most powerful offensive security platform ever built.<br>
+  Proxy, scanner, AI agent, race engine — one Rust binary.
 </p>
 
 <p align="center">
@@ -20,24 +20,27 @@
 
 ## What is Hugin?
 
-Hugin is a security proxy built for bug bounty hunters and penetration testers. It gives you everything you need to start hunting on day 1 — free, with no account required.
+Hugin is the next generation of offensive security tooling. It combines a full MITM proxy, an active vulnerability scanner, an AI agent with 162 MCP tools, a race-condition engine, and E2E-encrypted real-time collaboration — all in a single Rust binary. No JavaScript. No telemetry. No account required to start.
 
 **Community (free, forever):**
-- MITM Proxy (HTTP/1.1, HTTP/2, WebSocket)
+- MITM Proxy (HTTP/1.1, HTTP/2, HTTP/3, WebSocket, WebTransport)
 - Active Scanner (46 checks: SSRF, SQLi, SSTI, XSS, JWT, LDAP, BOLA, path traversal, and more)
-- Passive Scanner
+- Passive Scanner (42 checks)
 - Intruder (fuzzer with payload generators, processors, grep matching)
-- Repeater
-- Sequencer, Decoder, Comparer, Site Map
+- Repeater, Sequencer, Decoder, Comparer, Site Map
 - 126 MCP tools (connect Claude, Cursor, or any MCP-compatible AI agent)
+- Browser automation (CDP + Marionette, bypasses TLS fingerprinting)
+- OOB interaction detection (DNS, HTTP, HTTPS, SMTP, LDAP, FTP, SMB)
 
 **Pro (7 EUR/month — for everyone):**
 - Race condition engine (single-packet, last-byte sync)
+- Broken Access Control audit (IDOR, cross-tenant, JWT escalation, mass assignment)
+- HTTP request smuggling (CL.TE, TE.CL, H2 downgrade, SmuggleHarvester)
 - Synaps WASM modules (community scanner modules, sandboxed)
 - Lua extensions (modify live traffic with scripts)
 - E2E encrypted real-time collaboration
 - Multi-project workspaces
-- 162-tool MCP surface (HTTP smuggling, deserialization, SSRF chains)
+- 162-tool MCP surface (full vurl payload arsenal, DOM Invader, taint analysis)
 
 No subscriptions. No auto-renewal. Pay when you need it.
 Researcher, pentester, hacker — we don't differentiate. Everyone's welcome.

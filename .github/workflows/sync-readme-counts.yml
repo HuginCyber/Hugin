@@ -1,0 +1,43 @@
+name: Sync README counts from hugin.nu
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # daily at midnight UTC
+  workflow_dispatch:       # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch metrics from hugin.nu
+        id: metrics
+        run: |
+          METRICS=$(curl -fsSL https://hugin.nu/api/metrics)
+          echo "$METRICS"
+          ACTIVE=$(echo "$METRICS" | jq -r '.active_checks')
+          PASSIVE=$(echo "$METRICS" | jq -r '.passive_checks')
+          MCP=$(echo "$METRICS" | jq -r '.mcp_tools')
+          echo "active=$ACTIVE" >> "$GITHUB_OUTPUT"
+          echo "passive=$PASSIVE" >> "$GITHUB_OUTPUT"
+          echo "mcp=$MCP" >> "$GITHUB_OUTPUT"
+
+      - name: Update README.md
+        run: |
+          sed -i -E "s/### Active scanner — [0-9]+ checks/### Active scanner — ${{ steps.metrics.outputs.active }} checks/" README.md
+          sed -i -E "s/### Passive scanner — [0-9]+ checks/### Passive scanner — ${{ steps.metrics.outputs.passive }} checks/" README.md
+          sed -i -E "s/### AI agent — [0-9]+ MCP tools/### AI agent — ${{ steps.metrics.outputs.mcp }} MCP tools/" README.md
+          sed -i -E "s/Full [0-9]+-tool MCP surface/Full ${{ steps.metrics.outputs.mcp }}-tool MCP surface/" README.md
+
+      - name: Commit if changed
+        run: |
+          git diff --exit-code README.md && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "README: auto-sync counts from hugin.nu/api/metrics"
+          git push

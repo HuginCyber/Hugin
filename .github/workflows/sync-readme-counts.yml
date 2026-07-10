@@ -17,7 +17,7 @@ jobs:
       - name: Fetch metrics from hugin.nu
         id: metrics
         run: |
-          METRICS=$(curl -fsSL https://hugin.nu/api/metrics)
+          METRICS=$(curl -fsSL -H "User-Agent: hugin-readme-sync/1.0" https://hugin.nu/api/metrics)
           echo "$METRICS"
           ACTIVE=$(echo "$METRICS" | jq -r '.active_checks')
           PASSIVE=$(echo "$METRICS" | jq -r '.passive_checks')

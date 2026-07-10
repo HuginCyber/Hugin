@@ -27,7 +27,7 @@ Hugin is a local-first security testing tool built in Rust. One binary, no accou
 - Site map, request/response inspection, live tampering, match-and-replace rules
 - Cookie jar, session macros, WebSocket message interception
 
-### Active scanner — 46 checks
+### Active scanner — 55 checks
 
 Sends payloads and confirms real bugs. Not a pattern matcher.
 
@@ -40,13 +40,13 @@ Sends payloads and confirms real bugs. Not a pattern matcher.
 | Logic | Race conditions, CSRF, CORS, open redirect, path traversal, HPP, file upload |
 | Advanced | GraphQL + authz, cache deception, cache poisoning, host header, XXE, deserialization |
 
-### Passive scanner — 42 checks
+### Passive scanner — 48 checks
 
 Analyzes traffic without sending anything. Catches security headers, cleartext passwords, sensitive URLs, session tokens in URLs, ViewState issues, input reflection, Referer leaks, and more.
 
-### AI agent — 162 MCP tools
+### AI agent — 169 MCP tools
 
-Connect Claude, Cursor, or any MCP-compatible LLM. The agent can drive the proxy, run scanner checks, analyze flows, manage findings, and execute full testing workflows.
+Connect opencode, Claude, Cursor, or any MCP-compatible LLM. The agent can drive the proxy, run scanner checks, analyze flows, manage findings, and execute full testing workflows.
 
 Tools cover: session management, flow capture and analysis, scanner control, finding triage, OOB interaction polling, vault operations, BAC matrix testing, fingerprinting, crawling, and more.
 
@@ -117,7 +117,7 @@ Everything above is free. No account required to start. No telemetry. No time li
 - Lua extensions (modify live traffic with scripts)
 - Encrypted real-time collaboration
 - Multi-project workspaces
-- Full 162-tool MCP surface
+- Full 169-tool MCP surface
 
 No subscriptions. No auto-renewal. Pay when you need it.
 

@@ -17,8 +17,22 @@ jobs:
       - name: Fetch metrics from hugin.nu
         id: metrics
         run: |
-          METRICS=$(curl -fsSL -H "User-Agent: hugin-readme-sync/1.0" https://hugin.nu/api/metrics)
+          # Retry up to 3 times with a real browser User-Agent
+          METRICS=""
+          for i in 1 2 3; do
+            METRICS=$(curl -sS -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0" \
+                           -H "Accept: application/json" \
+                           https://hugin.nu/api/metrics 2>/dev/null)
+            if echo "$METRICS" | jq -e '.active_checks' >/dev/null 2>&1; then
+              break
+            fi
+            sleep 5
+          done
           echo "$METRICS"
+          if ! echo "$METRICS" | jq -e '.active_checks' >/dev/null 2>&1; then
+            echo "Failed to fetch metrics after 3 retries"
+            exit 1
+          fi
           ACTIVE=$(echo "$METRICS" | jq -r '.active_checks')
           PASSIVE=$(echo "$METRICS" | jq -r '.passive_checks')
           MCP=$(echo "$METRICS" | jq -r '.mcp_tools')

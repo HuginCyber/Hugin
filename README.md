@@ -165,4 +165,12 @@ Use this repo to:
 
 ## License
 
-Hugin is proprietary software. The Community tier is free to use. See [hugin.nu/pricing](https://hugin.nu/pricing) for details.
+This repository is the community hub. It holds documentation, issue templates,
+discussion templates and scripts — **not the Hugin application source, which is
+not hosted here**.
+
+The Hugin application is proprietary software. The Community tier is free to
+use; the commercial-use licence is a flat EUR 10/month. See
+[hugin.nu/pricing](https://hugin.nu/pricing) and the terms at
+[hugin.nu/terms](https://hugin.nu/terms). Nothing in this repository grants a
+licence to the Hugin application.

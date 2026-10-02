@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://hugin.nu">Website</a> &middot;
   <a href="https://hugin.nu/download">Download</a> &middot;
-  <a href="https://hugin.nu/docs">Documentation</a> &middot;
+  <a href="https://docs.hugin.nu/docs/">Documentation</a> &middot;
   <a href="https://hugin.nu/pricing">Pricing</a>
 </p>
 
@@ -27,7 +27,7 @@ Hugin is a local-first security testing tool built in Rust. One binary, no accou
 - Site map, request/response inspection, live tampering, match-and-replace rules
 - Cookie jar, session macros, WebSocket message interception
 
-### Active scanner — 55 checks
+### Active scanner — 64 checks
 
 Sends payloads and confirms real bugs. Not a pattern matcher.
 
@@ -44,7 +44,7 @@ Sends payloads and confirms real bugs. Not a pattern matcher.
 
 Analyzes traffic without sending anything. Catches security headers, cleartext passwords, sensitive URLs, session tokens in URLs, ViewState issues, input reflection, Referer leaks, and more.
 
-### AI agent — 169 MCP tools
+### AI agent — 174 MCP tools
 
 Connect opencode, Claude, Cursor, or any MCP-compatible LLM. The agent can drive the proxy, run scanner checks, analyze flows, manage findings, and execute full testing workflows.
 
@@ -108,7 +108,7 @@ Community scanner modules compiled to WASM. Sandboxed via Wasmtime with fuel lim
 
 Everything above is free. No account required to start. No telemetry. No time limit.
 
-## Pro — 7 EUR/month flat
+## Pro — 10 EUR/month flat
 
 - Race condition engine (single-packet, last-byte sync)
 - Broken Access Control audit (IDOR, cross-tenant, JWT escalation, mass assignment)
@@ -117,7 +117,7 @@ Everything above is free. No account required to start. No telemetry. No time li
 - Lua extensions (modify live traffic with scripts)
 - Encrypted real-time collaboration
 - Multi-project workspaces
-- Full 169-tool MCP surface
+- Full 174-tool MCP surface
 
 No subscriptions. No auto-renewal. Pay when you need it.
 
@@ -158,7 +158,7 @@ Use this repo to:
 ## Links
 
 - [hugin.nu](https://hugin.nu) — Website
-- [hugin.nu/docs](https://hugin.nu/docs) — Documentation
+- [docs.hugin.nu](https://docs.hugin.nu/docs/) — Documentation
 - [hugin.nu/about](https://hugin.nu/about) — Why Hugin exists
 - [X / Twitter](https://x.com/HuginCyber) — @HuginCyber
 - [LinkedIn](https://www.linkedin.com/company/hugin-cyber) — Hugin Cyber

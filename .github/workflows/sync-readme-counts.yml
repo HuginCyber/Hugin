@@ -1,12 +1,9 @@
-name: Sync README counts from metrics.json
+name: Sync README counts
 
 on:
   schedule:
     - cron: "0 0 * * *"   # daily at midnight UTC
   workflow_dispatch:       # manual trigger
-  push:
-    branches: [main]
-    paths: ['metrics.json']
 
 permissions:
   contents: write
@@ -17,22 +14,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read metrics and update README
+      # Counts come from the live /api/metrics endpoint, which build.rs derives
+      # from the real source at compile time. This job previously read a local
+      # metrics.json, which had itself gone stale (55/169 against a real 64/174),
+      # so the workflow faithfully propagated wrong numbers into the README.
+      # A file in this repo can drift; the deployed binary cannot.
+      #
+      # Cloudflare in front of hugin.nu answers 403 to default script UAs, so a
+      # browser User-Agent is required. --retry covers a transient edge blip.
+      - name: Fetch live metrics
         run: |
-          ACTIVE=$(jq -r '.active_checks' metrics.json)
-          PASSIVE=$(jq -r '.passive_checks' metrics.json)
-          MCP=$(jq -r '.mcp_tools' metrics.json)
-          echo "Active: $ACTIVE  Passive: $PASSIVE  MCP: $MCP"
+          curl -fsSL --retry 3 --retry-delay 5 \
+            -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36" \
+            https://hugin.nu/api/metrics -o /tmp/metrics.json
+          cat /tmp/metrics.json
+          ACTIVE=$(jq -r '.active_checks' /tmp/metrics.json)
+          PASSIVE=$(jq -r '.passive_checks' /tmp/metrics.json)
+          MCP=$(jq -r '.mcp_tools' /tmp/metrics.json)
+          OOB=$(jq -r '.oob_protocols' /tmp/metrics.json)
+          for v in "$ACTIVE" "$PASSIVE" "$MCP" "$OOB"; do
+            case "$v" in
+              ''|*[!0-9]*) echo "::error::metrics endpoint returned a non-numeric value"; exit 1;;
+            esac
+          done
+          echo "Active: $ACTIVE  Passive: $PASSIVE  MCP: $MCP  OOB: $OOB"
+
           sed -i -E "s/### Active scanner — [0-9]+ checks/### Active scanner — $ACTIVE checks/" README.md
           sed -i -E "s/### Passive scanner — [0-9]+ checks/### Passive scanner — $PASSIVE checks/" README.md
           sed -i -E "s/### AI agent — [0-9]+ MCP tools/### AI agent — $MCP MCP tools/" README.md
           sed -i -E "s/Full [0-9]+-tool MCP surface/Full $MCP-tool MCP surface/" README.md
 
+      # Keep metrics.json as a last-known-good snapshot rather than the source,
+      # so anyone reading the repo sees the real numbers too.
+      - name: Refresh the committed snapshot
+        run: cp /tmp/metrics.json metrics.json
+
       - name: Commit if changed
         run: |
-          git diff --exit-code README.md && exit 0
+          git diff --exit-code README.md metrics.json && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "README: sync counts from metrics.json"
+          git add README.md metrics.json
+          git commit -m "README: sync counts from live /api/metrics"
           git push

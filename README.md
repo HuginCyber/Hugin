@@ -106,7 +106,15 @@ Community scanner modules compiled to WASM. Sandboxed via Wasmtime with fuel lim
 
 ## Community (free, forever)
 
-Everything above is free. No account required to start. No telemetry. No time limit.
+The core tools are free: intercepting proxy, the in-band scanner, intruder,
+repeater, sequencer and decoder. No account required to start. No telemetry.
+No time limit.
+
+The offensive and advanced capabilities are Pro — the race-condition engine,
+out-of-band detection, Synaps WASM modules, Lua extensions, browser automation,
+the access-control and intelligence pipelines, real-time collaboration and the
+full MCP surface. See [hugin.nu/pricing](https://hugin.nu/pricing) for the
+exact line.
 
 ## Pro — 10 EUR/month flat
 

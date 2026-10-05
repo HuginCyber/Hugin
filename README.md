@@ -129,6 +129,14 @@ exact line.
 
 No subscriptions. No auto-renewal. Pay when you need it.
 
+## How Hugin compares
+
+- [Free Burp Suite alternative](https://hugin.nu/compare/burp-suite-alternative) — the full picture, including where Burp is still ahead
+- [Burp Community Edition — what's missing](https://hugin.nu/compare/burp-community-edition) — the free tier's scanner and Intruder gaps
+- [OWASP ZAP alternative](https://hugin.nu/compare/owasp-zap-alternative) — the open-source scanner against the native binary
+- [Caido alternative](https://hugin.nu/compare/caido-alternative) — a free proxy with the scanner built in
+- [Free web application vulnerability scanner](https://hugin.nu/compare/free-web-vulnerability-scanner) — Hugin, ZAP and Burp when the scanner is the deciding factor
+
 ## Students
 
 GitHub Student Developer Pack holders get 12 months of Pro for free. No forms, no proof uploads — GitHub already verified you.

@@ -40,11 +40,11 @@ Sends payloads and confirms real bugs. Not a pattern matcher.
 | Logic | Race conditions, CSRF, CORS, open redirect, path traversal, HPP, file upload |
 | Advanced | GraphQL + authz, cache deception, cache poisoning, host header, XXE, deserialization |
 
-### Passive scanner — 48 checks
+### Passive scanner — 46 checks
 
 Analyzes traffic without sending anything. Catches security headers, cleartext passwords, sensitive URLs, session tokens in URLs, ViewState issues, input reflection, Referer leaks, and more.
 
-### AI agent — 174 MCP tools
+### AI agent — 175 MCP tools
 
 Connect opencode, Claude, Cursor, or any MCP-compatible LLM. The agent can drive the proxy, run scanner checks, analyze flows, manage findings, and execute full testing workflows.
 
@@ -125,7 +125,7 @@ exact line.
 - Lua extensions (modify live traffic with scripts)
 - Encrypted real-time collaboration
 - Multi-project workspaces
-- Full 174-tool MCP surface
+- Full 175-tool MCP surface
 
 No subscriptions. No auto-renewal. Pay when you need it.
 

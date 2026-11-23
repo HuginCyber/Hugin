@@ -178,6 +178,8 @@ Use this repo to:
 - [hugin.nu/about](https://hugin.nu/about) — Why Hugin exists
 - [X / Twitter](https://x.com/HuginCyber) — @HuginCyber
 - [LinkedIn](https://www.linkedin.com/company/hugin-cyber) — Hugin Cyber
+- [Dodu Security](https://dodu.se) — the studio that builds and maintains Hugin,
+  and does fixed-fee smart contract and web application audits
 
 ## License
 

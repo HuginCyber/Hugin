@@ -192,3 +192,5 @@ use; the commercial-use licence is a flat EUR 10/month. See
 [hugin.nu/pricing](https://hugin.nu/pricing) and the terms at
 [hugin.nu/terms](https://hugin.nu/terms). Nothing in this repository grants a
 licence to the Hugin application.
+
+<!-- bba cross-org review fixture -->
